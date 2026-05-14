@@ -356,7 +356,7 @@ function getData(nBodies; totalETol = 1e-5, maxIter = 1000, maxTime=60,minYrs=15
     collision = nothing; collisionInds = nothing; escape = nothing; escapeInd = nothing
     skip = 1; maxSlowdown = 2^(-10); checkT = 1*yearSec; elapsedT = Δt; lastChecked = 0.; skipFac = 1; slowSkip = 1
     while i<length(T)+1 && quit == false
-        print("Generating data: Currently at $(@sprintf("%.2f",i/length(T)*maxTime))/$(maxTime)s -- simulation t = $(@sprintf("%.2f",T[i-1]/yearSec)) years\r")
+        print("Generating data: Currently at $(@sprintf("%.2f",i/length(T)*maxTime))/$(maxTime)s -- simulation t = $(@sprintf("%.2f",T[i-1]/yearSec)) years$(speedRecord[i-1] == 1 ? "             " : " (x$(@sprintf("%-3d",Int(speedRecord[i-1]))) speed)")\r")
         counter = 0; elapsedT = 0
         while counter < skip && nBodies > 2
             skip = skipFac*slowSkip
