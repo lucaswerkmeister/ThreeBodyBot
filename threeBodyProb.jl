@@ -1025,6 +1025,6 @@ function makeAnim(clean=true; tweet=nothing)
     end
 end
 
-main()
-#main(custom=true) # if you want to specify initial conditions
+#main()
+main(custom=true,maxTime=300) # note: getData() eagerly allocates data for the full maxTime, so higher maxTime means slower startup and higher memory usage – in the case of maxtime=3600 (one hour), some 20 gigabytes! so only bump this above 5 minutes when needed
 #makeAnim() #commented out because bot uses shell script to compile frames with music
